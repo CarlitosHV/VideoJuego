@@ -4,6 +4,7 @@ import com.sun.opengl.util.Animator;
 import com.sun.opengl.util.j2d.TextRenderer;
 import com.sun.opengl.util.texture.Texture;
 import com.sun.opengl.util.texture.TextureIO;
+import frames.Niveles;
 
 import java.awt.Font;
 import java.awt.Frame;
@@ -165,7 +166,7 @@ public class Juego implements GLEventListener
 
 						}
 						frame.dispose();
-						Seleccion nuevo = new Seleccion();
+						Niveles nuevo = new Niveles();
 						nuevo.personajeSeleccionado = 1;
 						nuevo.setVisible(true);
 
