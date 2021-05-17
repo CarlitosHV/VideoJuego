@@ -1,5 +1,6 @@
 package CreandoJuego;
 
+import Obtaculos_Figuras.Figura;
 import com.sun.opengl.util.Animator;
 import com.sun.opengl.util.j2d.TextRenderer;
 import com.sun.opengl.util.texture.Texture;
@@ -55,7 +56,7 @@ public class Juego implements GLEventListener
 	int pintadas = 0;
 
 	static boolean regresarVentanaActiva = false;
-	static RegresarAlMenu n;
+        static Niveles n;
 
 	static int x = 0;
 	static int z = 0;
@@ -263,8 +264,9 @@ public class Juego implements GLEventListener
 				clipFondo.stop();
 			}
 
-			n = new RegresarAlMenu(frame);
+			n = new Niveles();
 			n.setVisible(true);
+                        //D3DRenderQueue.disposeGraphicsConfig();
 
 		}
 		gl.glFlush();
