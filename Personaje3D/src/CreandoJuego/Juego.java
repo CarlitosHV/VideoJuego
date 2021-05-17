@@ -167,7 +167,7 @@ public class Juego implements GLEventListener
 						}
 						frame.dispose();
 						Niveles nuevo = new Niveles();
-						nuevo.personajeSeleccionado = 1;
+						nuevo.seleccionP = 1;
 						nuevo.setVisible(true);
 
 						if (n!=null)

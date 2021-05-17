@@ -11,9 +11,8 @@ package frames;
  */
 public class Niveles extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Niveles
-     */
+   public static int seleccionP = 0;
+    
     public Niveles() {
         
         initComponents();
@@ -48,8 +47,13 @@ public class Niveles extends javax.swing.JFrame {
                 N1MouseExited(evt);
             }
         });
+        N1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                N1ActionPerformed(evt);
+            }
+        });
         jPanel1.add(N1);
-        N1.setBounds(190, 50, 66, 25);
+        N1.setBounds(190, 50, 71, 25);
 
         N3.setText("Nivel 3");
         N3.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -66,7 +70,7 @@ public class Niveles extends javax.swing.JFrame {
             }
         });
         jPanel1.add(N3);
-        N3.setBounds(190, 170, 66, 25);
+        N3.setBounds(190, 170, 71, 25);
 
         N2.setText("Nivel 2");
         N2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -77,8 +81,13 @@ public class Niveles extends javax.swing.JFrame {
                 N2MouseExited(evt);
             }
         });
+        N2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                N2ActionPerformed(evt);
+            }
+        });
         jPanel1.add(N2);
-        N2.setBounds(190, 110, 66, 25);
+        N2.setBounds(190, 110, 71, 25);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/2.jpg"))); // NOI18N
         jPanel1.add(jLabel1);
@@ -99,7 +108,7 @@ public class Niveles extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void N3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_N3ActionPerformed
-        // TODO add your handling code here:
+        seleccionP = 3;
     }//GEN-LAST:event_N3ActionPerformed
 
     private void N1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_N1MouseEntered
@@ -131,6 +140,14 @@ public class Niveles extends javax.swing.JFrame {
         N1.setEnabled(true);
         N2.setEnabled(true);
     }//GEN-LAST:event_N3MouseExited
+
+    private void N1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_N1ActionPerformed
+        seleccionP = 1;
+    }//GEN-LAST:event_N1ActionPerformed
+
+    private void N2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_N2ActionPerformed
+        seleccionP = 2;
+    }//GEN-LAST:event_N2ActionPerformed
 
     /**
      * @param args the command line arguments
