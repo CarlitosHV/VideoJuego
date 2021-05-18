@@ -1,8 +1,12 @@
 package CreandoJuego;
 
 import Obtaculos_Figuras.Figura;
+import Obtaculos_Figuras.Moneda;
 import Obtaculos_Figuras.Obstaculo;
 import Obtaculos_Figuras.Pelota;
+import Obtaculos_Figuras.mBall;
+import animacionesP.Araña;
+import animacionesP.Robot;
 import com.sun.opengl.util.Animator;
 import com.sun.opengl.util.j2d.TextRenderer;
 import com.sun.opengl.util.texture.Texture;
@@ -31,6 +35,7 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.swing.JFrame;
 import personajesCod.DrawLuci;
+import personajesCod.drawrobot;
 
 public class Juego implements GLEventListener
 {
@@ -323,13 +328,14 @@ public class Juego implements GLEventListener
 				arregloObjetivos.remove(i);
 				if (personajePrincipal instanceof luci)
 				{
-					arregloObjetivos.add(new Hueso());
-				} else if (personajePrincipal instanceof Colibri)
+					arregloObjetivos.add(new Moneda());
+                                        
+				} else if (personajePrincipal instanceof Robot)
 				{
-					arregloObjetivos.add(new Diamante());
-				} else if (personajePrincipal instanceof Raton)
+					arregloObjetivos.add(new Pelota());
+				} else if (personajePrincipal instanceof Araña)
 				{
-					arregloObjetivos.add(new Queso());
+					arregloObjetivos.add(new Pelota());
 				}
 				arregloObstaculos.add(new Pelota());
 				sonido(sonidoPunto);
@@ -503,7 +509,7 @@ public class Juego implements GLEventListener
 
 	public void pintarPuntuacion()
 	{
-		TextRenderer txt = new TextRenderer(new Font("Sugarpunch DEMO", Font.PLAIN, 20));
+		TextRenderer txt = new TextRenderer(new Font("Juego jugable DEMO", Font.PLAIN, 20));
 		txt.beginRendering(600, 600);
 		txt.setColor(colorPuntR, colorPuntG, colorPuntB, 1f);
 		txt.draw("Puntuación: " + puntuacion, puntuacionCoordenadaX, puntuacionCoordenadaY);
@@ -533,14 +539,14 @@ public class Juego implements GLEventListener
 			personajePrincipal.centroX = personajePrincipal.matrizCoordenadasTransformada[563][0];
 			personajePrincipal.centroY = personajePrincipal.matrizCoordenadasTransformada[563][1];
 			personajePrincipal.centroZ = personajePrincipal.matrizCoordenadasTransformada[563][2];
-		} else if (personajePrincipal instanceof Colibri)
+		} else if (personajePrincipal instanceof drawrobot)
 		{
 			personajePrincipal.pintarFiguaTranformada3Colores(gl);
 
 			personajePrincipal.centroX = personajePrincipal.matrizCoordenadasTransformada[344][0];
 			personajePrincipal.centroY = personajePrincipal.matrizCoordenadasTransformada[344][1];
 			personajePrincipal.centroZ = personajePrincipal.matrizCoordenadasTransformada[344][2];
-		} else if (personajePrincipal instanceof Raton)
+		} else if (personajePrincipal instanceof DrawAraña)
 		{
 			personajePrincipal.pintarFiguaTranformada4Colores(gl);
 
