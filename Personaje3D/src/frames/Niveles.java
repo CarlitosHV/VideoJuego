@@ -109,6 +109,7 @@ public class Niveles extends javax.swing.JFrame {
 
     private void N3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_N3ActionPerformed
         seleccionP = 3;
+        PlayGame(seleccionP);
     }//GEN-LAST:event_N3ActionPerformed
 
     private void N1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_N1MouseEntered
@@ -143,12 +144,26 @@ public class Niveles extends javax.swing.JFrame {
 
     private void N1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_N1ActionPerformed
         seleccionP = 1;
+        PlayGame(seleccionP);
     }//GEN-LAST:event_N1ActionPerformed
 
     private void N2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_N2ActionPerformed
         seleccionP = 2;
+        PlayGame(seleccionP);
+        
+   
     }//GEN-LAST:event_N2ActionPerformed
 
+    public void PlayGame(int var)
+    {
+    
+        
+        
+        
+    
+    
+    }
+    
     /**
      * @param args the command line arguments
      */

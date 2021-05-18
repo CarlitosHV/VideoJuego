@@ -5,6 +5,7 @@
  */
 package personajesCod;
 
+import Obtaculos_Figuras.Figura;
 import javax.media.opengl.GL;
 import javax.media.opengl.glu.GLU;
 import javax.media.opengl.glu.GLUquadric;
@@ -13,7 +14,7 @@ import javax.media.opengl.glu.GLUquadric;
  *
  * @author Alan
  */
-public class DrawAraña  {
+public class DrawAraña extends Figura{
 
     private static final int SLICES = 40;
     private static final int STACKS = 40;
@@ -63,7 +64,14 @@ public class DrawAraña  {
     private static final float RADIO_PICO = 0.1525f;
     private static final float ALTURA_PICO = 0.5f;
 
-    public DrawAraña() {
+    public DrawAraña() 
+    {
+                super.matrizCoordenadasOriginal = matrizColibri;
+		super.matrizCoordenadasTransformada = matrizColibri;
+		super.matrizColores = matrizColoresColibri;
+		super.centroX=matrizCoordenadasTransformada[344][0];
+		super.centroY=matrizCoordenadasTransformada[344][1];
+		super.centroZ=matrizCoordenadasTransformada[344][2];
     }
 //boolean rotacion_X, boolean rotacion_Y, boolean rotacion_Z,
 //            boolean Traslacion, boolean Escalacion, boolean reflexion_X, boolean reflexion_Y, boolean reflexion_Z,

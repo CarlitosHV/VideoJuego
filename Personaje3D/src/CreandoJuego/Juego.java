@@ -30,6 +30,7 @@ import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.swing.JFrame;
+import personajesCod.DrawLuci;
 
 public class Juego implements GLEventListener
 {
@@ -512,7 +513,7 @@ public class Juego implements GLEventListener
 
 	public void pintarPuntuacionFinal()
 	{
-		TextRenderer txt = new TextRenderer(new Font("Sugarpunch DEMO", Font.PLAIN, 60));
+		TextRenderer txt = new TextRenderer(new Font("Run Bot Run  DEMO", Font.PLAIN, 60));
 		txt.beginRendering(600, 600);
 		txt.setColor(colorPuntR, colorPuntG, colorPuntB, 1f);
 		txt.draw("Puntuación: " + puntuacion, 120, 250);
@@ -525,7 +526,7 @@ public class Juego implements GLEventListener
 	{
 		darDileccion(ladoAGirar);
 		personajePrincipal.traslacionOriginal(x, 0, z);
-		if (personajePrincipal instanceof Perro)
+		if (personajePrincipal instanceof DrawLuci)
 		{
 			personajePrincipal.pintarFiguaTranformada4Colores(gl);
 
