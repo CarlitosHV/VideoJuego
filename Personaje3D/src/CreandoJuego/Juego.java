@@ -1,6 +1,8 @@
 package CreandoJuego;
 
 import Obtaculos_Figuras.Figura;
+import Obtaculos_Figuras.Obstaculo;
+import Obtaculos_Figuras.Pelota;
 import com.sun.opengl.util.Animator;
 import com.sun.opengl.util.j2d.TextRenderer;
 import com.sun.opengl.util.texture.Texture;
@@ -318,7 +320,7 @@ public class Juego implements GLEventListener
 			if (distanciaEntreObjetos < distancialimiteEntreObjetivoYPersonajes)
 			{
 				arregloObjetivos.remove(i);
-				if (personajePrincipal instanceof Perro)
+				if (personajePrincipal instanceof luci)
 				{
 					arregloObjetivos.add(new Hueso());
 				} else if (personajePrincipal instanceof Colibri)

@@ -32,7 +32,7 @@ import javax.media.opengl.glu.GLU;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import personajesCod.DrawLuci;
-import personajesCod.mBall;
+import Obtaculos_Figuras.mBall;
 
 public class LuciMorning implements GLEventListener, MouseListener, MouseMotionListener, KeyListener{
     
