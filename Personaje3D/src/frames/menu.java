@@ -5,19 +5,8 @@
  */
 package frames;
 
-import com.sun.opengl.util.Animator;
-import java.awt.Color;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import javax.media.opengl.GLCanvas;
-import javax.media.opengl.GLEventListener;
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
-import javax.swing.JPanel;
+import clases.Clase_Sonido;
 
 /**
  *
@@ -29,17 +18,17 @@ public class menu extends javax.swing.JFrame {
     Clip sonidomen = null;
     int band,bndS=0;
     public static Clip clipFondo;
-    
-    public String Menu = "src/sonidos/MainMenu.wav";
+    boolean bandera1=false;
+    int bandera2;
+    Clase_Sonido son = new Clase_Sonido();
+    public String Menu = "mainsong";
+    public String Boton = "boton";
     
     
     public menu() {
         initComponents();
         this.setLocationRelativeTo(null);
-       // if (band != 1) {
-         //   sonidomenu("MainMenu");
-        //}
-       // System.out.println(band);
+        
     }
     
 
@@ -77,7 +66,7 @@ public class menu extends javax.swing.JFrame {
             }
         });
         jPanel1.add(botonPlay);
-        botonPlay.setBounds(260, 140, 97, 73);
+        botonPlay.setBounds(270, 150, 98, 74);
 
         btnAyuda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/informacion.png"))); // NOI18N
         btnAyuda.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -91,7 +80,7 @@ public class menu extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnAyuda);
-        btnAyuda.setBounds(10, 0, 40, 40);
+        btnAyuda.setBounds(10, 10, 40, 40);
 
         btnCreditos.setText("Créditos");
         btnCreditos.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -115,6 +104,11 @@ public class menu extends javax.swing.JFrame {
                 soMouseClicked(evt);
             }
         });
+        so.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                soActionPerformed(evt);
+            }
+        });
         jPanel1.add(so);
         so.setBounds(130, 280, 120, 80);
 
@@ -124,20 +118,23 @@ public class menu extends javax.swing.JFrame {
                 soffMouseClicked(evt);
             }
         });
+        soff.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                soffActionPerformed(evt);
+            }
+        });
         jPanel1.add(soff);
         soff.setBounds(370, 280, 110, 80);
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Fondo2.jpg"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/FondoM.jpg"))); // NOI18N
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(-9, -4, 650, 430);
+        jLabel2.setBounds(-9, -4, 630, 430);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 642, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 613, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -155,14 +152,13 @@ public class menu extends javax.swing.JFrame {
     }//GEN-LAST:event_botonPlayMouseClicked
 
     private void botonPlayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonPlayActionPerformed
+        if (bandera1==true) {
+            son.sonidoOff();
+        }
         frmSeleccion2 per= new frmSeleccion2();
+        son.sonidomenu(Boton);
         per.setVisible(true);
         dispose();
-        clipFondo.stop();
-        
-        
-        //band = 1;
-        //System.out.println(band);
     }//GEN-LAST:event_botonPlayActionPerformed
 
     private void btnAyudaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAyudaMouseClicked
@@ -184,71 +180,27 @@ public class menu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCreditosMouseClicked
 
     private void soffMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_soffMouseClicked
-      /*  if (musicaoff == true) {
-            sonidomen.stop();
-            musicaoff = false;
-        }*/
-      
-        clipFondo.stop();
+      son.sonidoOff();
+      bandera2=1;
+      son.entrabandera(bandera2);
     }//GEN-LAST:event_soffMouseClicked
 
     private void soMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_soMouseClicked
-       /* if (musicaoff == false) {
-            sonidomenu("MainMenu");
-            musicaoff = true;
-        }*/
-        
-        if (bndS==0)
-        {
-            sonidoFondo("MainMenu");
-        }
-        clipFondo.start();
+       son.sonidomenu(Menu);
+       bandera1=true;
     }//GEN-LAST:event_soMouseClicked
+
+    private void soActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_soActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_soActionPerformed
+
+    private void soffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_soffActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_soffActionPerformed
     
-    public void Sound(String a){
-        if (sonidomen!=null) {
-            sonidomen.stop();
-        }
-        sonidomenu(a);
-    }
-    
-    public void sonidomenu(String ef) {
-        try {
-            sonidomen = AudioSystem.getClip();
-            sonidomen.open(AudioSystem.getAudioInputStream(new File("src/sonidos/"+ef+".wav")));
-            sonidomen.loop(1000);
-        } catch (IOException e) {
-            System.err.println(e.getMessage());
-        } catch (LineUnavailableException e) {
-            System.err.println(e.getMessage());
-        } catch (UnsupportedAudioFileException e) {
-            System.err.println(e.getMessage());
-        }
-    }
+ 
     
     
-    public static synchronized void sonidoFondo(final String sonido)
-    {
-		new Thread(new Runnable()
-		{
-			// The wrapper thread is unnecessary, unless it blocks on the
-			// Clip finishing; see comments.
-			public void run()
-			{
-				File d = new File("src/sonidos/" + sonido + ".wav");
-				try
-				{
-					clipFondo = AudioSystem.getClip();
-					AudioInputStream inputStream = AudioSystem.getAudioInputStream(d);
-					clipFondo.open(inputStream);
-					clipFondo.start();
-				} catch (Exception e)
-				{
-					System.err.println(e.getMessage());
-				}
-			}
-		}).start();
-    }
 
     /**
      * @param args the command line arguments
@@ -286,14 +238,6 @@ public class menu extends javax.swing.JFrame {
         });
     }
     
-   
-    
-    public void setpane(JPanel a)
-    {
-        
-              
-    
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonPlay;

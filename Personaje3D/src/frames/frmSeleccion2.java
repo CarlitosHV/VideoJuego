@@ -26,12 +26,18 @@ public class frmSeleccion2 extends javax.swing.JFrame {
     private Animator animatorLuci;
     private Animator animatorRobot;
     private Animator animatorAraña;
-    public boolean bander = true;
-    int bandera;
-    Clase_Sonido obj=new Clase_Sonido();
+    int bandera1;
+    Clase_Sonido son = new Clase_Sonido();
+    
+    public String Menu = "mainsong";
 
     public frmSeleccion2() {
         initComponents();
+        if(son.entrabandera(bandera1)==2){
+            son.sonidoOff();
+        }else{
+            son.sonidomenu(Menu);
+        }
         this.setLocationRelativeTo(null);
         
         canvasLuci.addGLEventListener(new LuciMorning());
@@ -152,7 +158,7 @@ public class frmSeleccion2 extends javax.swing.JFrame {
         this.setVisible(false);
         obj.setVisible(true);
         dispose();
-
+        son.sonidoOff();
     }//GEN-LAST:event_btnBackMouseClicked
 
     private void canvasLuciMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_canvasLuciMouseEntered
@@ -218,9 +224,6 @@ public class frmSeleccion2 extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_canvasArañaMouseClicked
 
-    public void stopaudio(boolean b) {
-        bander = false;
-    }
 
     /**
      * @param args the command line arguments

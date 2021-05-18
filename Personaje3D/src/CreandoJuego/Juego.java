@@ -671,26 +671,4 @@ public class Juego implements GLEventListener
 		}).start();
 	}
 
-	public static synchronized void sonido(final String sonido)
-	{
-		new Thread(new Runnable()
-		{
-			// The wrapper thread is unnecessary, unless it blocks on the
-			// Clip finishing; see comments.
-			public void run()
-			{
-				File d = new File("src/sonidos/" + sonido + ".wav");
-				try
-				{
-					Clip clip = AudioSystem.getClip();
-					AudioInputStream inputStream = AudioSystem.getAudioInputStream(d);
-					clip.open(inputStream);
-					clip.start();
-				} catch (Exception e)
-				{
-					System.err.println(e.getMessage());
-				}
-			}
-		}).start();
-	}
 }
