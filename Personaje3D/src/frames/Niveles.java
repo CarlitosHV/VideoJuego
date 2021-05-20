@@ -5,24 +5,56 @@
  */
 package frames;
 
+import animacionesP.Araña;
+import animacionesP.LuciMorning;
+import animacionesP.Robot;
 import clases.Clase_Sonido;
+import com.sun.opengl.util.Animator;
 
 /**
  *
  * @author carlo
  */
+
+
+
 public class Niveles extends javax.swing.JFrame {
 
+    private Animator animatorLuci;
+    private Animator animatorRobot;
+    private Animator animatorAraña;
+    
+    
     public static int seleccionP = 0;
     Clase_Sonido son = new Clase_Sonido();
-
+    frmSeleccion2 band = new frmSeleccion2();
     public String Menu = "mainsong";
+    public int obtengopersonaje=0;
 
     public Niveles() {
-
         initComponents();
         son.sonidomenu(Menu);
         this.setLocationRelativeTo(null);
+        
+        if (getObtengopersonaje()==1) {
+            CanvasGeneral.addGLEventListener(new LuciMorning());
+            animatorLuci = new Animator(CanvasGeneral);
+            animatorLuci.start();
+        }else{
+            if (getObtengopersonaje()==2) {
+                CanvasGeneral.addGLEventListener(new Robot());
+                animatorRobot = new Animator(CanvasGeneral);
+                animatorRobot.start();
+            }else{
+                if (getObtengopersonaje()==3) {
+                    CanvasGeneral.addGLEventListener(new Araña());
+                    animatorAraña = new Animator(CanvasGeneral);
+                    animatorAraña.start();
+                }
+            }
+        }
+        System.out.println("Bandera final");
+        System.out.println(getObtengopersonaje());
     }
 
     /**
@@ -38,14 +70,16 @@ public class Niveles extends javax.swing.JFrame {
         N1 = new javax.swing.JButton();
         N3 = new javax.swing.JButton();
         N2 = new javax.swing.JButton();
-        gLCanvas1 = new javax.media.opengl.GLCanvas();
+        CanvasGeneral = new javax.media.opengl.GLCanvas();
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         jPanel1.setLayout(null);
 
+        N1.setBackground(java.awt.Color.cyan);
         N1.setText("Nivel 1");
         N1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -63,6 +97,7 @@ public class Niveles extends javax.swing.JFrame {
         jPanel1.add(N1);
         N1.setBounds(400, 100, 66, 25);
 
+        N3.setBackground(java.awt.Color.cyan);
         N3.setText("Nivel 3");
         N3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -80,6 +115,7 @@ public class Niveles extends javax.swing.JFrame {
         jPanel1.add(N3);
         N3.setBounds(400, 270, 66, 25);
 
+        N2.setBackground(java.awt.Color.cyan);
         N2.setText("Nivel 2");
         N2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -96,9 +132,10 @@ public class Niveles extends javax.swing.JFrame {
         });
         jPanel1.add(N2);
         N2.setBounds(400, 180, 66, 25);
-        jPanel1.add(gLCanvas1);
-        gLCanvas1.setBounds(120, 130, 150, 130);
+        jPanel1.add(CanvasGeneral);
+        CanvasGeneral.setBounds(120, 130, 150, 130);
 
+        jButton1.setBackground(java.awt.Color.cyan);
         jButton1.setText("Atrás");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -183,6 +220,14 @@ public class Niveles extends javax.swing.JFrame {
     public void PlayGame(int var) {
 
     }
+    
+    public int capturabandera(int dato){
+        
+        
+        return dato;
+    }
+    
+    
 
     /**
      * @param args the command line arguments
@@ -220,12 +265,20 @@ public class Niveles extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.media.opengl.GLCanvas CanvasGeneral;
     private javax.swing.JButton N1;
     private javax.swing.JButton N2;
     private javax.swing.JButton N3;
-    private javax.media.opengl.GLCanvas gLCanvas1;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
+
+    public int getObtengopersonaje() {
+        return obtengopersonaje;
+    }
+
+    public void setObtengopersonaje(int obtengopersonaje) {
+        this.obtengopersonaje = obtengopersonaje;
+    }
 }

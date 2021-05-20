@@ -7,6 +7,7 @@ package frames;
 
 import javax.sound.sampled.Clip;
 import clases.Clase_Sonido;
+import java.awt.Color;
 
 /**
  *
@@ -19,15 +20,38 @@ public class menu extends javax.swing.JFrame {
     int bndS = 0;
    
     public static Clip clipFondo;
-    boolean bandera1, bandera2 = false;
+    public int bandera2;
+    public int bandera1=1;
+
+    public int getBandera1() {
+        return bandera1;
+    }
+
+    public void setBandera1(int bandera1) {
+        this.bandera1 = bandera1;
+    }
+
+    public menu(int bandera1) {
+        this.bandera1 = bandera1;
+    }
+    
+    
     Clase_Sonido son = new Clase_Sonido();
     public String Menu = "mainsong";
     public String Boton = "boton";
+    
+    
+    
 
     public menu() {
         initComponents();
+        
         son.sonidomenu(Menu);
-        bandera1 = true;
+        
+        if(musicaon==false){
+            System.out.println(bandera1);
+        }
+        System.out.println(bandera1);
         this.setLocationRelativeTo(null);
 
     }
@@ -48,9 +72,12 @@ public class menu extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         so = new javax.swing.JButton();
         soff = new javax.swing.JButton();
+        salir = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Run, robot, run!");
+        setUndecorated(true);
 
         jPanel1.setLayout(null);
 
@@ -66,8 +93,9 @@ public class menu extends javax.swing.JFrame {
             }
         });
         jPanel1.add(botonPlay);
-        botonPlay.setBounds(250, 140, 98, 74);
+        botonPlay.setBounds(240, 130, 98, 74);
 
+        btnAyuda.setBackground(java.awt.Color.cyan);
         btnAyuda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/informacion.png"))); // NOI18N
         btnAyuda.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -80,8 +108,9 @@ public class menu extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnAyuda);
-        btnAyuda.setBounds(20, 370, 40, 40);
+        btnAyuda.setBounds(520, 320, 40, 40);
 
+        btnCreditos.setBackground(java.awt.Color.cyan);
         btnCreditos.setText("Créditos");
         btnCreditos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -95,7 +124,7 @@ public class menu extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("..Run Bot Run..");
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(170, 50, 270, 50);
+        jLabel1.setBounds(170, 40, 270, 50);
 
         so.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/sonidoon.png"))); // NOI18N
         so.setToolTipText("");
@@ -110,7 +139,7 @@ public class menu extends javax.swing.JFrame {
             }
         });
         jPanel1.add(so);
-        so.setBounds(160, 270, 80, 80);
+        so.setBounds(160, 240, 80, 80);
 
         soff.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/sonidooff.png"))); // NOI18N
         soff.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -124,7 +153,17 @@ public class menu extends javax.swing.JFrame {
             }
         });
         jPanel1.add(soff);
-        soff.setBounds(350, 270, 80, 80);
+        soff.setBounds(340, 240, 80, 80);
+
+        salir.setBackground(java.awt.Color.cyan);
+        salir.setText("Salir del juego");
+        salir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salirActionPerformed(evt);
+            }
+        });
+        jPanel1.add(salir);
+        salir.setBounds(20, 380, 110, 25);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/FondoM.jpg"))); // NOI18N
         jPanel1.add(jLabel2);
@@ -177,7 +216,9 @@ public class menu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCreditosMouseClicked
 
     private void soffMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_soffMouseClicked
+        int band=2;
         son.sonidoOff();
+        setBandera1(band);
         musicaon=false;
     }//GEN-LAST:event_soffMouseClicked
 
@@ -200,6 +241,11 @@ public class menu extends javax.swing.JFrame {
     private void soffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_soffActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_soffActionPerformed
+
+    private void salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirActionPerformed
+        
+        System.exit(0);
+    }//GEN-LAST:event_salirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -250,6 +296,7 @@ public class menu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton salir;
     private javax.swing.JButton so;
     private javax.swing.JButton soff;
     // End of variables declaration//GEN-END:variables

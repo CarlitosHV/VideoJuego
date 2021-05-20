@@ -22,9 +22,7 @@ public class frmAyuda extends javax.swing.JFrame {
     
     public frmAyuda() {
         initComponents();
-        if (bandera1==son.entrabandera(bandera1)) {
-            son.sonidomenu(Menu);
-        } 
+        
         
         
         this.setLocationRelativeTo(null);
@@ -53,6 +51,7 @@ public class frmAyuda extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         jPanel1.setLayout(null);
 
@@ -101,6 +100,7 @@ public class frmAyuda extends javax.swing.JFrame {
         jPanel1.add(jLabel11);
         jLabel11.setBounds(60, 120, 64, 64);
 
+        btnBack.setBackground(java.awt.Color.cyan);
         btnBack.setText("Atrás");
         btnBack.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {

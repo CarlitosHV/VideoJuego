@@ -25,15 +25,19 @@ public class frmSeleccion2 extends javax.swing.JFrame {
     private Animator animatorLuci;
     private Animator animatorRobot;
     private Animator animatorAraña;
-    int bandera1;
-    Clase_Sonido son = new Clase_Sonido();
 
+    Clase_Sonido son = new Clase_Sonido();
+    menu men = new menu();
+    
+
+    private int banderapersonaje = 0;
+    
     public String Menu = "mainsong";
 
     public frmSeleccion2() {
         initComponents();
-        son.sonidomenu(Menu);
-        this.setLocationRelativeTo(null);
+
+        
 
         canvasLuci.addGLEventListener(new LuciMorning());
         canvasRobot.addGLEventListener(new Robot());
@@ -45,7 +49,8 @@ public class frmSeleccion2 extends javax.swing.JFrame {
         animatorRobot.start();
         animatorAraña = new Animator(canvasAraña);
         animatorAraña.start();
-
+        
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -66,9 +71,11 @@ public class frmSeleccion2 extends javax.swing.JFrame {
         jlFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         jPanel1.setLayout(null);
 
+        btnBack.setBackground(java.awt.Color.cyan);
         btnBack.setText("Atrás");
         btnBack.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -188,10 +195,13 @@ public class frmSeleccion2 extends javax.swing.JFrame {
     }//GEN-LAST:event_canvasArañaMouseExited
 
     private void canvasLuciMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_canvasLuciMouseClicked
+
         if (JOptionPane.showConfirmDialog(null, "¿Confirmas el personaje?", "Aviso",
                 JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
             son.sonidoOff();
             Niveles niv = new Niveles();
+            banderapersonaje=1;
+            niv.setObtengopersonaje(banderapersonaje);
             niv.setVisible(true);
             this.dispose();
         } else {
@@ -204,6 +214,8 @@ public class frmSeleccion2 extends javax.swing.JFrame {
                 JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
             son.sonidoOff();
             Niveles niv = new Niveles();
+            banderapersonaje=2;
+            niv.setObtengopersonaje(banderapersonaje);
             niv.setVisible(true);
             this.dispose();
         } else {
@@ -216,6 +228,8 @@ public class frmSeleccion2 extends javax.swing.JFrame {
                 JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
             son.sonidoOff();
             Niveles niv = new Niveles();
+            banderapersonaje=3;
+            niv.setObtengopersonaje(banderapersonaje);
             niv.setVisible(true);
             this.dispose();
         } else {
@@ -268,4 +282,13 @@ public class frmSeleccion2 extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel jlFondo;
     // End of variables declaration//GEN-END:variables
+
+    public int getBanderapersonaje() {
+        return banderapersonaje;
+    }
+
+    public void setBanderapersonaje(int banderapersonaje) {
+        this.banderapersonaje = banderapersonaje;
+    }
+
 }

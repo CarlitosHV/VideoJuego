@@ -21,6 +21,7 @@ public class Clase_Sonido {
 
     int bndS = 0;
     public static Clip clip;
+
     
     
     public Clase_Sonido() {
