@@ -14,9 +14,10 @@ import clases.Clase_Sonido;
  */
 public class menu extends javax.swing.JFrame {
 
-    public boolean musicaoff = true;
+    public boolean musicaon = true;
     Clip sonidomen = null;
-    int band, bndS = 0;
+    int bndS = 0;
+   
     public static Clip clipFondo;
     boolean bandera1, bandera2 = false;
     Clase_Sonido son = new Clase_Sonido();
@@ -177,15 +178,19 @@ public class menu extends javax.swing.JFrame {
 
     private void soffMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_soffMouseClicked
         son.sonidoOff();
-        bandera2 = false;
-        bandera1 = false;
-        son.entrabandera(bandera2);
+        musicaon=false;
     }//GEN-LAST:event_soffMouseClicked
 
     private void soMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_soMouseClicked
-        son.sonidomenu(Menu);
-        bandera2 = true;
-        son.entrabandera(bandera2);
+        
+        if (musicaon==false) {
+           son.sonidomenu(Menu);
+           musicaon=true;
+        }else{
+            
+        }
+
+        
     }//GEN-LAST:event_soMouseClicked
 
     private void soActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_soActionPerformed
@@ -199,6 +204,11 @@ public class menu extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
+    
+  
+
+    
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

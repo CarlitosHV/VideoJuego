@@ -21,33 +21,20 @@ public class Clase_Sonido {
 
     int bndS = 0;
     public static Clip clip;
-    boolean band=true;
+    
     
     public Clase_Sonido() {
         
     }
     
-    public boolean entrabandera(boolean ban){
-
-        if (ban==true) {
-            band=ban;
-        }else{
-            band=ban;
-        }
-        System.out.println(band);
-        return band;
-        
-    }
-    
-    
-   
+  
    
     
 
     public void sonidoOff() {
-
-        clip.stop();
-
+        if (clip!=null) {
+            clip.stop();
+        }
     }
 
     public void sonidomenu(String ef) {

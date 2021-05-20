@@ -138,22 +138,22 @@ public class Robot implements GLEventListener, MouseListener, MouseMotionListene
         gl.glShadeModel(GL.GL_SMOOTH);
 
         try {
-            File iCielo = new File("src/fondos/imagencielo.jpeg");
+            File iCielo = new File("src/imagenes/2.jpg");
             tCielo = TextureIO.newTexture(iCielo, true);
 
-            File iPiso = new File("src/fondos/imagensuelo.jpg");
+            File iPiso = new File("src/imagenes/2.jpg");
             tPiso = TextureIO.newTexture(iPiso, true);
 
-            File iAtras = new File("src/fondos/imagen3.png");
+            File iAtras = new File("src/imagenes/2.jpg");
             tAtras = TextureIO.newTexture(iAtras, true);
 
-            File iFrente = new File("src/fondos/imagen1.jpg");
+            File iFrente = new File("src/imagenes/2.jpg");
             tFrente = TextureIO.newTexture(iFrente, true);
 
-            File iIzquierda = new File("src/fondos/imagen2.jpg");
+            File iIzquierda = new File("src/imagenes/2.jpg");
             tIzquierda = TextureIO.newTexture(iIzquierda, true);
 
-            File iDerecha = new File("src/fondos/imagen4.jpg");
+            File iDerecha = new File("src/imagenes/2.jpg");
             tDerecha = TextureIO.newTexture(iDerecha, true);
 
         } catch (Exception e) {
@@ -205,7 +205,7 @@ public class Robot implements GLEventListener, MouseListener, MouseMotionListene
 
         //we draw robot in the window
         drawrobot robot = new drawrobot();
-        /*
+        
         //piso nuevo
         gl.glPushMatrix();
         gl.glScaled(1.0f, 0.7f, 1.0f);
@@ -256,7 +256,7 @@ public class Robot implements GLEventListener, MouseListener, MouseMotionListene
         robot.fondo(gl, glu, tAtras);
         gl.glPopMatrix();
         gl.glFlush();
-        */
+        
         robot.draw_robot(gl, keys['W'], keys['J'], keys['Q'], keys['K'], keys['M']);
 
         //efecto colisión

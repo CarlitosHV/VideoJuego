@@ -35,7 +35,7 @@ import sun.audio.AudioStream;
 
 /**
  *
- * @author Alan
+ * @author Carlitos
  */
 public class Araña extends JFrame implements GLEventListener,
         KeyListener, MouseListener, MouseMotionListener {
@@ -63,19 +63,18 @@ public class Araña extends JFrame implements GLEventListener,
     private static final float Y_POSITION = -0.08f;
     private static final float Z_POSITION = 0f;
     private Animator ani;
+    Texture tAtras;
+    Texture tFrente;
+    Texture tDerecha;
+    Texture tIzquierda;
+    Texture tCielo;
+    Texture tPiso;
+    int mFondo;
 
     public Araña() {
     }
 
-    public void setVisible(boolean show) {
-        if (!show) {
-            ani.stop();
-        }
-        super.setVisible(show);
-        if (!show) {
-            ani.start();
-        }
-    }
+    
 
     /**
      * @param args the command line arguments
@@ -148,19 +147,33 @@ public class Araña extends JFrame implements GLEventListener,
         gl.glEnable(GL.GL_LIGHT0);
         gl.glEnable(GL.GL_DEPTH_TEST);
 
-        /*
-        try
-        {
-            File im = new File("src/Imagen/fondo.jpg");
-            t = TextureIO.newTexture(im, true);
-        } catch (IOException ex)
-        {
-            ex.printStackTrace();
-        }
-         */
+        
         gl.glClearColor(0.9f, 0.9f, 0.9f, 0.9f);
 
         gl.glShadeModel(GL.GL_SMOOTH);
+        
+        try {
+            File iCielo = new File("src/imagenes/1.jpg");
+            tCielo = TextureIO.newTexture(iCielo, true);
+
+            File iPiso = new File("src/imagenes/1.jpg");
+            tPiso = TextureIO.newTexture(iPiso, true);
+
+            File iAtras = new File("src/imagenes/1.jpg");
+            tAtras = TextureIO.newTexture(iAtras, true);
+
+            File iFrente = new File("src/imagenes/1.jpg");
+            tFrente = TextureIO.newTexture(iFrente, true);
+
+            File iIzquierda = new File("src/imagenes/1.jpg");
+            tIzquierda = TextureIO.newTexture(iIzquierda, true);
+
+            File iDerecha = new File("src/imagenes/1.jpg");
+            tDerecha = TextureIO.newTexture(iDerecha, true);
+
+        } catch (Exception e) {
+        }
+        
         drawable.addMouseListener(this);
         drawable.addMouseMotionListener(this);
         drawable.addKeyListener(this);
@@ -191,6 +204,61 @@ public class Araña extends JFrame implements GLEventListener,
                 keys['J'],
                 keys['P']
         );
+        
+        DrawAraña araña = new DrawAraña();
+        
+        //piso nuevo
+        gl.glPushMatrix();
+        gl.glScaled(1.0f, 0.7f, 1.0f);
+        gl.glTranslated(0.0f, 0.0f, 1.0f);
+        gl.glRotatef(-90, 1.0f, 0.0f, 0.0f);
+        araña.fondo(gl, glu, tPiso);
+        gl.glPopMatrix();
+        gl.glFlush();
+
+        //nuevo cielo
+        gl.glPushMatrix();
+        gl.glScaled(1.0f, 0.7f, 1.0f);
+        gl.glTranslated(0.0f, 0.0f, 1.0f);
+        gl.glRotatef(90, 1.0f, 0.0f, 0.0f);
+        araña.fondo(gl, glu, tCielo);
+        gl.glPopMatrix();
+        gl.glFlush();
+
+        //nuevo izquierdo
+        gl.glPushMatrix();
+        gl.glScaled(1.0f, 0.9f, 1.0f);
+        gl.glRotatef(90, 0.0f, 1.0f, 0.0f);
+        araña.fondo(gl, glu, tIzquierda);
+        gl.glPopMatrix();
+        gl.glFlush();
+
+        //nuevo derecho
+        gl.glPushMatrix();
+        gl.glScaled(1.0f, 0.9f, 1.0f);
+        gl.glRotatef(-90, 0.0f, 1.0f, 0.0f);
+        araña.fondo(gl, glu, tDerecha);
+        gl.glPopMatrix();
+        gl.glFlush();
+
+        //nuevo frente
+        gl.glPushMatrix();
+        gl.glScaled(1.0f, 0.9f, 1.0f);
+        gl.glTranslated(-1.0f, -1.0f, 10.0f);
+        gl.glRotatef(0, 0.0f, 0.0f, 1.0f);
+        araña.fondo(gl, glu, tFrente);
+        gl.glPopMatrix();
+        gl.glFlush();
+
+        //nuevo atrás
+        gl.glPushMatrix();
+        gl.glScaled(1.0f, 1.0f, 1.0f);
+        gl.glTranslated(0.0f, 0.0f, 0.0f);
+        araña.fondo(gl, glu, tAtras);
+        gl.glPopMatrix();
+        gl.glFlush();
+        
+        araña.DIBU_jf(gl, keys['O'], keys['J'], keys['W']);
 
         // Flush all drawing operations to the graphics card
         gl.glFlush();

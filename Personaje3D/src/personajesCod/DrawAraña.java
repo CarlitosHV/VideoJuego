@@ -6,6 +6,7 @@
 package personajesCod;
 
 import Obtaculos_Figuras.Figura;
+import com.sun.opengl.util.texture.Texture;
 import javax.media.opengl.GL;
 import javax.media.opengl.glu.GLU;
 import javax.media.opengl.glu.GLUquadric;
@@ -66,12 +67,12 @@ public class DrawAraña extends Figura{
 
     public DrawAraña() 
     {
-                super.matrizCoordenadasOriginal = matrizColibri;
+                /*super.matrizCoordenadasOriginal = matrizColibri;
 		super.matrizCoordenadasTransformada = matrizColibri;
 		super.matrizColores = matrizColoresColibri;
 		super.centroX=matrizCoordenadasTransformada[344][0];
 		super.centroY=matrizCoordenadasTransformada[344][1];
-		super.centroZ=matrizCoordenadasTransformada[344][2];
+		super.centroZ=matrizCoordenadasTransformada[344][2];*/
     }
 //boolean rotacion_X, boolean rotacion_Y, boolean rotacion_Z,
 //            boolean Traslacion, boolean Escalacion, boolean reflexion_X, boolean reflexion_Y, boolean reflexion_Z,
@@ -620,5 +621,45 @@ public class DrawAraña extends Figura{
             gl.glEnd();
             w += dw;
         }
+    }
+    public void set_upLight(GL gl) {
+        float ligth_ambient[] = {0.2f, 0.2f, 0.2f, 1.0f};
+        float ligth_difuse[] = {1.0f, 1.0f, 1.0f, 1.0f};
+        float ligth_specular[] = {1.0f, 1.0f, 1.0f, 1.0f};
+        float ligth_position[] = {1.0f, 1.0f, 1.0f, 1.0f};
+
+        gl.glLightfv(GL.GL_LIGHT0, GL.GL_AMBIENT, ligth_ambient, 0);
+        gl.glLightfv(GL.GL_LIGHT0, GL.GL_DIFFUSE, ligth_difuse, 0);
+        gl.glLightfv(GL.GL_LIGHT0, GL.GL_SPECULAR, ligth_specular, 0);
+        gl.glLightfv(GL.GL_LIGHT0, GL.GL_POSITION, ligth_position, 0);
+
+        gl.glEnable(GL.GL_LIGHTING);
+        gl.glEnable(GL.GL_LIGHT0);
+        gl.glEnable(GL.GL_DEPTH_TEST);
+    }
+    public void fondo(GL gl, GLU glu, Texture t) {
+        set_upLight(gl);
+        int m = t.getTextureObject();
+        gl.glEnable(GL.GL_TEXTURE_2D);
+        gl.glBindTexture(GL.GL_TEXTURE_2D, m);
+
+        gl.glBegin(GL.GL_QUADS);
+
+        gl.glTexCoord2d(0.0f, 1.0f);
+        gl.glVertex3f(-6.0f, -6.0f, -6.0f);
+
+        gl.glTexCoord2d(1.0f, 1.0f);
+        gl.glVertex3f(6.0f, -6.0f, -6.0f);
+
+        gl.glTexCoord2d(1.0f, 0.0f);
+        gl.glVertex3f(6.0f, 6.0f, -6.0f);
+
+        gl.glTexCoord2d(0.0f, 0.0f);
+        gl.glVertex3f(-6.0f, 6.0f, -6.0f);
+
+        gl.glEnd();
+        gl.glFlush();
+
+        gl.glDisable(GL.GL_TEXTURE_2D);
     }
 }
