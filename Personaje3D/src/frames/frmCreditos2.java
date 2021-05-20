@@ -5,18 +5,26 @@
  */
 package frames;
 
+import clases.Clase_Sonido;
+
 /**
  *
  * @author vicOMG99
  */
 public class frmCreditos2 extends javax.swing.JFrame {
 
+    
+    Clase_Sonido son = new Clase_Sonido();
+    public String Menu = "mainsong";
+    
     /**
      * Creates new form frmCreditos2
      */
     public frmCreditos2() 
     {
         initComponents();
+        son.sonidomenu(Menu);
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -41,54 +49,67 @@ public class frmCreditos2 extends javax.swing.JFrame {
 
         jPanel1.setLayout(null);
 
+        jLabel1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Maestra:");
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(40, 50, 51, 16);
+        jLabel1.setBounds(160, 130, 80, 24);
 
+        jLabel4.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Rocio Elizabeth Pulido Alba");
         jPanel1.add(jLabel4);
-        jLabel4.setBounds(90, 70, 153, 16);
+        jLabel4.setBounds(210, 150, 219, 24);
 
+        Desarrolladores.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        Desarrolladores.setForeground(new java.awt.Color(0, 0, 0));
         Desarrolladores.setText("Desarrolladores:");
         jPanel1.add(Desarrolladores);
-        Desarrolladores.setBounds(20, 110, 95, 16);
+        Desarrolladores.setBounds(140, 190, 132, 24);
 
+        jLabel3.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Hernandez Velazquez Carlos Alberto");
         jPanel1.add(jLabel3);
-        jLabel3.setBounds(70, 140, 208, 16);
+        jLabel3.setBounds(190, 220, 291, 24);
 
+        jLabel2.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Valdespino Jaramillo Victor Manuel ");
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(80, 180, 203, 16);
+        jLabel2.setBounds(200, 260, 283, 24);
 
-        btnBack.setText("atras");
+        btnBack.setText("Atrás");
         btnBack.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnBackMouseClicked(evt);
             }
         });
         jPanel1.add(btnBack);
-        btnBack.setBounds(0, 0, 61, 25);
+        btnBack.setBounds(20, 370, 80, 25);
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/doge-main.jpg"))); // NOI18N
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/FondoM.jpg"))); // NOI18N
         jPanel1.add(jLabel5);
-        jLabel5.setBounds(1, -4, 400, 310);
+        jLabel5.setBounds(1, -4, 626, 420);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 403, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 625, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 308, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 416, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBackMouseClicked
+        son.sonidoOff();
         menu obj = new menu();
         this.setVisible(false);
         obj.setVisible(true);

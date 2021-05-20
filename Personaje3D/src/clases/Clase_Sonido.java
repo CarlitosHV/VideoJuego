@@ -20,15 +20,28 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 public class Clase_Sonido {
 
     int bndS = 0;
-    int bandera;
     public static Clip clip;
-
+    boolean band=true;
+    
     public Clase_Sonido() {
-    }
-    public int entrabandera(int ban){
         
-        return bandera;
     }
+    
+    public boolean entrabandera(boolean ban){
+
+        if (ban==true) {
+            band=ban;
+        }else{
+            band=ban;
+        }
+        System.out.println(band);
+        return band;
+        
+    }
+    
+    
+   
+   
     
 
     public void sonidoOff() {

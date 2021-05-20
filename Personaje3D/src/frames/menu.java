@@ -16,21 +16,20 @@ public class menu extends javax.swing.JFrame {
 
     public boolean musicaoff = true;
     Clip sonidomen = null;
-    int band,bndS=0;
+    int band, bndS = 0;
     public static Clip clipFondo;
-    boolean bandera1=false;
-    int bandera2;
+    boolean bandera1, bandera2 = false;
     Clase_Sonido son = new Clase_Sonido();
     public String Menu = "mainsong";
     public String Boton = "boton";
-    
-    
+
     public menu() {
         initComponents();
+        son.sonidomenu(Menu);
+        bandera1 = true;
         this.setLocationRelativeTo(null);
-        
+
     }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -66,7 +65,7 @@ public class menu extends javax.swing.JFrame {
             }
         });
         jPanel1.add(botonPlay);
-        botonPlay.setBounds(270, 150, 98, 74);
+        botonPlay.setBounds(250, 140, 98, 74);
 
         btnAyuda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/informacion.png"))); // NOI18N
         btnAyuda.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -80,7 +79,7 @@ public class menu extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnAyuda);
-        btnAyuda.setBounds(10, 10, 40, 40);
+        btnAyuda.setBounds(20, 370, 40, 40);
 
         btnCreditos.setText("Créditos");
         btnCreditos.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -89,7 +88,7 @@ public class menu extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnCreditos);
-        btnCreditos.setBounds(70, 10, 100, 25);
+        btnCreditos.setBounds(490, 390, 100, 25);
 
         jLabel1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 3, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -97,7 +96,7 @@ public class menu extends javax.swing.JFrame {
         jPanel1.add(jLabel1);
         jLabel1.setBounds(170, 50, 270, 50);
 
-        so.setText("Sonido ON");
+        so.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/sonidoon.png"))); // NOI18N
         so.setToolTipText("");
         so.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -110,9 +109,9 @@ public class menu extends javax.swing.JFrame {
             }
         });
         jPanel1.add(so);
-        so.setBounds(130, 280, 120, 80);
+        so.setBounds(160, 270, 80, 80);
 
-        soff.setText("Sonido OFF");
+        soff.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/sonidooff.png"))); // NOI18N
         soff.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 soffMouseClicked(evt);
@@ -124,7 +123,7 @@ public class menu extends javax.swing.JFrame {
             }
         });
         jPanel1.add(soff);
-        soff.setBounds(370, 280, 110, 80);
+        soff.setBounds(350, 270, 80, 80);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/FondoM.jpg"))); // NOI18N
         jPanel1.add(jLabel2);
@@ -145,27 +144,24 @@ public class menu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonPlayMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonPlayMouseClicked
-    
+
         //this.setVisible(false);
-        
-       
+
     }//GEN-LAST:event_botonPlayMouseClicked
 
     private void botonPlayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonPlayActionPerformed
-        if (bandera1==true) {
-            son.sonidoOff();
-        }
-        frmSeleccion2 per= new frmSeleccion2();
-        son.sonidomenu(Boton);
+        son.sonidoOff();
+        frmSeleccion2 per = new frmSeleccion2();
         per.setVisible(true);
-        dispose();
+        this.dispose();
     }//GEN-LAST:event_botonPlayActionPerformed
 
     private void btnAyudaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAyudaMouseClicked
-       this.setVisible(false);
-       frmAyuda obj = new frmAyuda();
-       obj.setVisible(true);
-       //dispose();
+        son.sonidoOff();
+        this.setVisible(false);
+        frmAyuda obj = new frmAyuda();
+        obj.setVisible(true);
+
     }//GEN-LAST:event_btnAyudaMouseClicked
 
     private void btnAyudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAyudaActionPerformed
@@ -173,21 +169,23 @@ public class menu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAyudaActionPerformed
 
     private void btnCreditosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCreditosMouseClicked
-        //this.setVisible(false);
-       frmCreditos2 obj = new frmCreditos2();
-       obj.setVisible(true);
-       dispose();
+        son.sonidoOff();
+        frmCreditos2 obj = new frmCreditos2();
+        obj.setVisible(true);
+        dispose();
     }//GEN-LAST:event_btnCreditosMouseClicked
 
     private void soffMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_soffMouseClicked
-      son.sonidoOff();
-      bandera2=1;
-      son.entrabandera(bandera2);
+        son.sonidoOff();
+        bandera2 = false;
+        bandera1 = false;
+        son.entrabandera(bandera2);
     }//GEN-LAST:event_soffMouseClicked
 
     private void soMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_soMouseClicked
-       son.sonidomenu(Menu);
-       bandera1=true;
+        son.sonidomenu(Menu);
+        bandera2 = true;
+        son.entrabandera(bandera2);
     }//GEN-LAST:event_soMouseClicked
 
     private void soActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_soActionPerformed
@@ -197,10 +195,6 @@ public class menu extends javax.swing.JFrame {
     private void soffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_soffActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_soffActionPerformed
-    
- 
-    
-    
 
     /**
      * @param args the command line arguments
@@ -233,11 +227,11 @@ public class menu extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new menu().setVisible(true);
-                
+
             }
         });
     }
-    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonPlay;
