@@ -5,6 +5,8 @@
  */
 package frames;
 
+import clases.Clase_Sonido;
+
 /**
  *
  * @author vicOMG99
@@ -14,8 +16,17 @@ public class frmAyuda extends javax.swing.JFrame {
     /**
      * Creates new form frmAyuda
      */
+    Clase_Sonido son = new Clase_Sonido();
+    public String Menu = "mainsong";
+    boolean bandera1=true;
+    
     public frmAyuda() {
         initComponents();
+        if (bandera1==son.entrabandera(bandera1)) {
+            son.sonidomenu(Menu);
+        } 
+        
+        
         this.setLocationRelativeTo(null);
     }
 
@@ -49,80 +60,84 @@ public class frmAyuda extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(51, 51, 255));
         jLabel2.setText("w");
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(370, 170, 20, 40);
+        jLabel2.setBounds(410, 220, 20, 40);
 
         jLabel4.setForeground(new java.awt.Color(51, 51, 255));
         jLabel4.setText("Tecla A saltas");
         jPanel1.add(jLabel4);
-        jLabel4.setBounds(200, 250, 80, 16);
+        jLabel4.setBounds(240, 300, 69, 15);
 
         jLabel5.setForeground(new java.awt.Color(51, 51, 255));
         jLabel5.setText("Tecla W caminas");
         jPanel1.add(jLabel5);
-        jLabel5.setBounds(341, 260, 98, 16);
+        jLabel5.setBounds(380, 310, 82, 15);
 
         jLabel6.setForeground(new java.awt.Color(51, 51, 255));
         jLabel6.setText("Tecla S retrocedes");
         jPanel1.add(jLabel6);
-        jLabel6.setBounds(30, 250, 108, 16);
+        jLabel6.setBounds(70, 300, 92, 15);
 
         jLabel7.setFont(new java.awt.Font("Yu Gothic", 1, 24)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(51, 51, 255));
         jLabel7.setText("A");
         jPanel1.add(jLabel7);
-        jLabel7.setBounds(220, 170, 16, 40);
+        jLabel7.setBounds(260, 220, 16, 40);
 
         jLabel8.setFont(new java.awt.Font("Yu Gothic", 1, 24)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(51, 51, 255));
         jLabel8.setText("S");
         jPanel1.add(jLabel8);
-        jLabel8.setBounds(60, 170, 16, 40);
+        jLabel8.setBounds(100, 220, 16, 40);
 
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/hombre-peatonal.png"))); // NOI18N
         jPanel1.add(jLabel9);
-        jLabel9.setBounds(350, 100, 64, 64);
+        jLabel9.setBounds(390, 150, 64, 64);
 
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/saltar-hombre.png"))); // NOI18N
         jPanel1.add(jLabel10);
-        jLabel10.setBounds(200, 50, 64, 64);
+        jLabel10.setBounds(240, 100, 64, 64);
 
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/caminar.png"))); // NOI18N
         jPanel1.add(jLabel11);
-        jLabel11.setBounds(20, 70, 64, 64);
+        jLabel11.setBounds(60, 120, 64, 64);
 
-        btnBack.setText("atras");
+        btnBack.setText("Atrás");
         btnBack.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnBackMouseClicked(evt);
             }
         });
         jPanel1.add(btnBack);
-        btnBack.setBounds(0, 0, 61, 25);
+        btnBack.setBounds(30, 360, 61, 25);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/help3.jpg"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/FondoM.jpg"))); // NOI18N
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(-60, 0, 520, 290);
+        jLabel1.setBounds(-60, 0, 630, 410);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 468, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 564, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 408, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBackMouseClicked
+        son.sonidoOff();
         menu obj = new menu();
         this.setVisible(false);
         obj.setVisible(true);
-        dispose();
-        
+        this.dispose();    
     }//GEN-LAST:event_btnBackMouseClicked
 
     /**

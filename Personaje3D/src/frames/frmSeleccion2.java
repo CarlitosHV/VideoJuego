@@ -5,7 +5,6 @@
  */
 package frames;
 
-
 import animacionesP.Araña;
 import animacionesP.LuciMorning;
 import animacionesP.Robot;
@@ -28,18 +27,14 @@ public class frmSeleccion2 extends javax.swing.JFrame {
     private Animator animatorAraña;
     int bandera1;
     Clase_Sonido son = new Clase_Sonido();
-    
+
     public String Menu = "mainsong";
 
     public frmSeleccion2() {
         initComponents();
-        if(son.entrabandera(bandera1)==2){
-            son.sonidoOff();
-        }else{
-            son.sonidomenu(Menu);
-        }
+        son.sonidomenu(Menu);
         this.setLocationRelativeTo(null);
-        
+
         canvasLuci.addGLEventListener(new LuciMorning());
         canvasRobot.addGLEventListener(new Robot());
         canvasAraña.addGLEventListener(new Araña());
@@ -50,7 +45,7 @@ public class frmSeleccion2 extends javax.swing.JFrame {
         animatorRobot.start();
         animatorAraña = new Animator(canvasAraña);
         animatorAraña.start();
-        
+
     }
 
     /**
@@ -81,7 +76,7 @@ public class frmSeleccion2 extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnBack);
-        btnBack.setBounds(10, 10, 63, 25);
+        btnBack.setBounds(10, 370, 61, 25);
 
         canvasLuci.setBackground(new java.awt.Color(0, 0, 0));
         canvasLuci.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -96,7 +91,7 @@ public class frmSeleccion2 extends javax.swing.JFrame {
             }
         });
         jPanel1.add(canvasLuci);
-        canvasLuci.setBounds(20, 120, 225, 180);
+        canvasLuci.setBounds(40, 170, 130, 110);
 
         canvasRobot.setBackground(new java.awt.Color(0, 0, 0));
         canvasRobot.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -111,7 +106,7 @@ public class frmSeleccion2 extends javax.swing.JFrame {
             }
         });
         jPanel1.add(canvasRobot);
-        canvasRobot.setBounds(300, 120, 225, 180);
+        canvasRobot.setBounds(230, 170, 130, 110);
 
         canvasAraña.setBackground(new java.awt.Color(153, 153, 153));
         canvasAraña.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -126,39 +121,40 @@ public class frmSeleccion2 extends javax.swing.JFrame {
             }
         });
         jPanel1.add(canvasAraña);
-        canvasAraña.setBounds(630, 120, 225, 180);
+        canvasAraña.setBounds(430, 170, 130, 110);
 
         jLabel1.setFont(new java.awt.Font("Courier New", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Selecciona tu personaje");
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(200, 40, 420, 25);
+        jLabel1.setBounds(80, 100, 420, 25);
 
-        jlFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fandoGamer2.png"))); // NOI18N
+        jlFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/FondoM.jpg"))); // NOI18N
         jPanel1.add(jlFondo);
-        jlFondo.setBounds(-4, 6, 880, 400);
+        jlFondo.setBounds(-4, 6, 630, 400);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 867, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 624, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 411, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 409, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBackMouseClicked
+        son.sonidoOff();
         menu obj = new menu();
         this.setVisible(false);
         obj.setVisible(true);
         dispose();
-        son.sonidoOff();
+
     }//GEN-LAST:event_btnBackMouseClicked
 
     private void canvasLuciMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_canvasLuciMouseEntered
@@ -194,6 +190,7 @@ public class frmSeleccion2 extends javax.swing.JFrame {
     private void canvasLuciMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_canvasLuciMouseClicked
         if (JOptionPane.showConfirmDialog(null, "¿Confirmas el personaje?", "Aviso",
                 JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+            son.sonidoOff();
             Niveles niv = new Niveles();
             niv.setVisible(true);
             this.dispose();
@@ -205,6 +202,7 @@ public class frmSeleccion2 extends javax.swing.JFrame {
     private void canvasRobotMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_canvasRobotMouseClicked
         if (JOptionPane.showConfirmDialog(null, "¿Confirmas el personaje?", "Aviso",
                 JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+            son.sonidoOff();
             Niveles niv = new Niveles();
             niv.setVisible(true);
             this.dispose();
@@ -216,6 +214,7 @@ public class frmSeleccion2 extends javax.swing.JFrame {
     private void canvasArañaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_canvasArañaMouseClicked
         if (JOptionPane.showConfirmDialog(null, "¿Confirmas el personaje?", "Aviso",
                 JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+            son.sonidoOff();
             Niveles niv = new Niveles();
             niv.setVisible(true);
             this.dispose();
@@ -223,7 +222,6 @@ public class frmSeleccion2 extends javax.swing.JFrame {
 
         }
     }//GEN-LAST:event_canvasArañaMouseClicked
-
 
     /**
      * @param args the command line arguments

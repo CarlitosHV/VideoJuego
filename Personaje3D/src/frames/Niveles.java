@@ -5,17 +5,23 @@
  */
 package frames;
 
+import clases.Clase_Sonido;
+
 /**
  *
  * @author carlo
  */
 public class Niveles extends javax.swing.JFrame {
 
-   public static int seleccionP = 0;
-    
+    public static int seleccionP = 0;
+    Clase_Sonido son = new Clase_Sonido();
+
+    public String Menu = "mainsong";
+
     public Niveles() {
-        
+
         initComponents();
+        son.sonidomenu(Menu);
         this.setLocationRelativeTo(null);
     }
 
@@ -32,6 +38,8 @@ public class Niveles extends javax.swing.JFrame {
         N1 = new javax.swing.JButton();
         N3 = new javax.swing.JButton();
         N2 = new javax.swing.JButton();
+        gLCanvas1 = new javax.media.opengl.GLCanvas();
+        jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -53,7 +61,7 @@ public class Niveles extends javax.swing.JFrame {
             }
         });
         jPanel1.add(N1);
-        N1.setBounds(190, 50, 71, 25);
+        N1.setBounds(400, 100, 66, 25);
 
         N3.setText("Nivel 3");
         N3.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -70,7 +78,7 @@ public class Niveles extends javax.swing.JFrame {
             }
         });
         jPanel1.add(N3);
-        N3.setBounds(190, 170, 71, 25);
+        N3.setBounds(400, 270, 66, 25);
 
         N2.setText("Nivel 2");
         N2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -87,21 +95,32 @@ public class Niveles extends javax.swing.JFrame {
             }
         });
         jPanel1.add(N2);
-        N2.setBounds(190, 110, 71, 25);
+        N2.setBounds(400, 180, 66, 25);
+        jPanel1.add(gLCanvas1);
+        gLCanvas1.setBounds(120, 130, 150, 130);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/2.jpg"))); // NOI18N
+        jButton1.setText("Atrás");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1);
+        jButton1.setBounds(50, 350, 61, 25);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/FondoM.jpg"))); // NOI18N
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(0, 0, 480, 266);
+        jLabel1.setBounds(0, 0, 630, 390);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 473, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 623, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 266, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 387, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -150,20 +169,21 @@ public class Niveles extends javax.swing.JFrame {
     private void N2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_N2ActionPerformed
         seleccionP = 2;
         PlayGame(seleccionP);
-        
-   
+
+
     }//GEN-LAST:event_N2ActionPerformed
 
-    public void PlayGame(int var)
-    {
-    
-        
-        
-        
-    
-    
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+       son.sonidoOff();
+       frmSeleccion2 sel = new frmSeleccion2();
+       sel.setVisible(true);
+       this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    public void PlayGame(int var) {
+
     }
-    
+
     /**
      * @param args the command line arguments
      */
@@ -203,6 +223,8 @@ public class Niveles extends javax.swing.JFrame {
     private javax.swing.JButton N1;
     private javax.swing.JButton N2;
     private javax.swing.JButton N3;
+    private javax.media.opengl.GLCanvas gLCanvas1;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
