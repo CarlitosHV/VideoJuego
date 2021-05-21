@@ -10,17 +10,14 @@ import animacionesP.LuciMorning;
 import animacionesP.Robot;
 import clases.Clase_Sonido;
 import com.sun.opengl.util.Animator;
-import java.io.File;
-import java.io.InputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author vicOMG99
  */
-public class frmSeleccion2 extends javax.swing.JFrame {
+public class frmSeleccion2 extends javax.swing.JFrame
+{
 
     private Animator animatorLuci;
     private Animator animatorRobot;
@@ -30,14 +27,11 @@ public class frmSeleccion2 extends javax.swing.JFrame {
     menu men = new menu();
     
 
-    private int banderapersonaje = 0;
-    
     public String Menu = "mainsong";
 
-    public frmSeleccion2() {
+    public frmSeleccion2()
+    {
         initComponents();
-
-        
 
         canvasLuci.addGLEventListener(new LuciMorning());
         canvasRobot.addGLEventListener(new Robot());
@@ -49,7 +43,7 @@ public class frmSeleccion2 extends javax.swing.JFrame {
         animatorRobot.start();
         animatorAraña = new Animator(canvasAraña);
         animatorAraña.start();
-        
+
         this.setLocationRelativeTo(null);
     }
 
@@ -195,44 +189,43 @@ public class frmSeleccion2 extends javax.swing.JFrame {
     }//GEN-LAST:event_canvasArañaMouseExited
 
     private void canvasLuciMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_canvasLuciMouseClicked
-
         if (JOptionPane.showConfirmDialog(null, "¿Confirmas el personaje?", "Aviso",
-                JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+                JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION)
+        {
             son.sonidoOff();
-            Niveles niv = new Niveles();
-            banderapersonaje=1;
-            niv.setObtengopersonaje(banderapersonaje);
+            Niveles niv = new Niveles(1);
             niv.setVisible(true);
             this.dispose();
-        } else {
+        } else
+        {
 
         }
     }//GEN-LAST:event_canvasLuciMouseClicked
 
     private void canvasRobotMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_canvasRobotMouseClicked
         if (JOptionPane.showConfirmDialog(null, "¿Confirmas el personaje?", "Aviso",
-                JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+                JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION)
+        {
             son.sonidoOff();
-            Niveles niv = new Niveles();
-            banderapersonaje=2;
-            niv.setObtengopersonaje(banderapersonaje);
+            Niveles niv = new Niveles(2);
             niv.setVisible(true);
             this.dispose();
-        } else {
+        } else
+        {
 
         }
     }//GEN-LAST:event_canvasRobotMouseClicked
 
     private void canvasArañaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_canvasArañaMouseClicked
         if (JOptionPane.showConfirmDialog(null, "¿Confirmas el personaje?", "Aviso",
-                JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+                JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION)
+        {
             son.sonidoOff();
-            Niveles niv = new Niveles();
-            banderapersonaje=3;
-            niv.setObtengopersonaje(banderapersonaje);
+            Niveles niv = new Niveles(3);
             niv.setVisible(true);
             this.dispose();
-        } else {
+        } else
+        {
 
         }
     }//GEN-LAST:event_canvasArañaMouseClicked
@@ -240,33 +233,43 @@ public class frmSeleccion2 extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(String args[])
+    {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+        try
+        {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels())
+            {
+                if ("Nimbus".equals(info.getName()))
+                {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
+        } catch (ClassNotFoundException ex)
+        {
             java.util.logging.Logger.getLogger(frmSeleccion2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
+        } catch (InstantiationException ex)
+        {
             java.util.logging.Logger.getLogger(frmSeleccion2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
+        } catch (IllegalAccessException ex)
+        {
             java.util.logging.Logger.getLogger(frmSeleccion2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (javax.swing.UnsupportedLookAndFeelException ex)
+        {
             java.util.logging.Logger.getLogger(frmSeleccion2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
+        java.awt.EventQueue.invokeLater(new Runnable()
+        {
+            public void run()
+            {
                 new frmSeleccion2().setVisible(true);
             }
         });
@@ -282,13 +285,4 @@ public class frmSeleccion2 extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel jlFondo;
     // End of variables declaration//GEN-END:variables
-
-    public int getBanderapersonaje() {
-        return banderapersonaje;
-    }
-
-    public void setBanderapersonaje(int banderapersonaje) {
-        this.banderapersonaje = banderapersonaje;
-    }
-
 }

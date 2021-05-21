@@ -15,38 +15,41 @@ import com.sun.opengl.util.Animator;
  *
  * @author carlo
  */
-
-
-
-public class Niveles extends javax.swing.JFrame {
+public class Niveles extends javax.swing.JFrame
+{
 
     private Animator animatorLuci;
     private Animator animatorRobot;
     private Animator animatorAraña;
-    
-    
-    public static int seleccionP = 0;
+
     Clase_Sonido son = new Clase_Sonido();
     frmSeleccion2 band = new frmSeleccion2();
     public String Menu = "mainsong";
-    public int obtengopersonaje=0;
+    public static int bandera;
 
-    public Niveles() {
+    public Niveles(int n)
+    {
         initComponents();
+        bandera=n;
         son.sonidomenu(Menu);
         this.setLocationRelativeTo(null);
-        
-        if (getObtengopersonaje()==1) {
+
+        if (bandera == 1)
+        {
             CanvasGeneral.addGLEventListener(new LuciMorning());
             animatorLuci = new Animator(CanvasGeneral);
             animatorLuci.start();
-        }else{
-            if (getObtengopersonaje()==2) {
+        } else
+        {
+            if (bandera == 2)
+            {
                 CanvasGeneral.addGLEventListener(new Robot());
                 animatorRobot = new Animator(CanvasGeneral);
                 animatorRobot.start();
-            }else{
-                if (getObtengopersonaje()==3) {
+            } else
+            {
+                if (bandera == 3)
+                {
                     CanvasGeneral.addGLEventListener(new Araña());
                     animatorAraña = new Animator(CanvasGeneral);
                     animatorAraña.start();
@@ -54,7 +57,7 @@ public class Niveles extends javax.swing.JFrame {
             }
         }
         System.out.println("Bandera final");
-        System.out.println(getObtengopersonaje());
+        System.out.println(bandera);
     }
 
     /**
@@ -164,8 +167,7 @@ public class Niveles extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void N3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_N3ActionPerformed
-        seleccionP = 3;
-        PlayGame(seleccionP);
+        PlayGame(bandera);
     }//GEN-LAST:event_N3ActionPerformed
 
     private void N1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_N1MouseEntered
@@ -199,67 +201,74 @@ public class Niveles extends javax.swing.JFrame {
     }//GEN-LAST:event_N3MouseExited
 
     private void N1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_N1ActionPerformed
-        seleccionP = 1;
-        PlayGame(seleccionP);
+        PlayGame(bandera);
     }//GEN-LAST:event_N1ActionPerformed
 
     private void N2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_N2ActionPerformed
-        seleccionP = 2;
-        PlayGame(seleccionP);
+        PlayGame(bandera);
 
 
     }//GEN-LAST:event_N2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       son.sonidoOff();
-       frmSeleccion2 sel = new frmSeleccion2();
-       sel.setVisible(true);
-       this.dispose();
+        son.sonidoOff();
+        frmSeleccion2 sel = new frmSeleccion2();
+        sel.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    public void PlayGame(int var) {
+    public void PlayGame(int var)
+    {
 
     }
-    
-    public int capturabandera(int dato){
-        
-        
+
+    public int capturabandera(int dato)
+    {
+
         return dato;
     }
-    
-    
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(String args[])
+    {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+        try
+        {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels())
+            {
+                if ("Nimbus".equals(info.getName()))
+                {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
+        } catch (ClassNotFoundException ex)
+        {
             java.util.logging.Logger.getLogger(Niveles.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
+        } catch (InstantiationException ex)
+        {
             java.util.logging.Logger.getLogger(Niveles.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
+        } catch (IllegalAccessException ex)
+        {
             java.util.logging.Logger.getLogger(Niveles.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (javax.swing.UnsupportedLookAndFeelException ex)
+        {
             java.util.logging.Logger.getLogger(Niveles.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Niveles().setVisible(true);
+        java.awt.EventQueue.invokeLater(new Runnable()
+        {
+            public void run()
+            {
+                new Niveles(1).setVisible(true);
             }
         });
     }
@@ -274,11 +283,4 @@ public class Niveles extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 
-    public int getObtengopersonaje() {
-        return obtengopersonaje;
-    }
-
-    public void setObtengopersonaje(int obtengopersonaje) {
-        this.obtengopersonaje = obtengopersonaje;
-    }
 }

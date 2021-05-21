@@ -13,11 +13,13 @@ import java.awt.Color;
  *
  * @author vicOMG99
  */
+
 public class menu extends javax.swing.JFrame {
 
     public boolean musicaon = true;
     Clip sonidomen = null;
     int bndS = 0;
+    boolean isplay = false;
    
     public static Clip clipFondo;
     public int bandera2;
@@ -216,30 +218,23 @@ public class menu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCreditosMouseClicked
 
     private void soffMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_soffMouseClicked
-        int band=2;
-        son.sonidoOff();
-        setBandera1(band);
-        musicaon=false;
+
     }//GEN-LAST:event_soffMouseClicked
 
     private void soMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_soMouseClicked
-        
-        if (musicaon==false) {
-           son.sonidomenu(Menu);
-           musicaon=true;
-        }else{
-            
-        }
-
-        
     }//GEN-LAST:event_soMouseClicked
 
     private void soActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_soActionPerformed
-        // TODO add your handling code here:
+        isplay=true;
+        if (isplay)
+        {
+            son.sonidomenu(Menu);
+        }
     }//GEN-LAST:event_soActionPerformed
 
     private void soffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_soffActionPerformed
-        // TODO add your handling code here:
+        isplay=false;
+        son.sonidoOff();
     }//GEN-LAST:event_soffActionPerformed
 
     private void salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirActionPerformed
