@@ -23,15 +23,27 @@ public class Niveles extends javax.swing.JFrame
     private Animator animatorAraña;
 
     Clase_Sonido son = new Clase_Sonido();
-    frmSeleccion2 band = new frmSeleccion2();
+
     public String Menu = "mainsong";
     public static int bandera;
+    public static int bandera2;
 
-    public Niveles(int n)
+    public Niveles(int n, int n2)
     {
         initComponents();
-        bandera=n;
-        son.sonidomenu(Menu);
+        bandera = n;
+        bandera2 = n2;
+        
+        if (bandera2==1)
+        {
+            son.sonidomenu(Menu);
+        }else{
+            if (bandera2==2)
+            {
+               son.sonidoOff(); 
+            }
+        }
+        
         this.setLocationRelativeTo(null);
 
         if (bandera == 1)
@@ -57,7 +69,7 @@ public class Niveles extends javax.swing.JFrame
             }
         }
         System.out.println("Bandera final");
-        System.out.println(bandera);
+        System.out.println(bandera2);
     }
 
     /**
@@ -212,8 +224,18 @@ public class Niveles extends javax.swing.JFrame
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         son.sonidoOff();
-        frmSeleccion2 sel = new frmSeleccion2();
-        sel.setVisible(true);
+        if (bandera2 == 1)
+        {
+            frmSeleccion2 sel = new frmSeleccion2(1);
+            sel.setVisible(true);
+        } else
+        {
+            if (bandera2 == 2)
+            {
+                frmSeleccion2 sel = new frmSeleccion2(2);
+                sel.setVisible(true);
+            }
+        }
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -268,7 +290,7 @@ public class Niveles extends javax.swing.JFrame
         {
             public void run()
             {
-                new Niveles(1).setVisible(true);
+                new Niveles(1, 1).setVisible(true);
             }
         });
     }

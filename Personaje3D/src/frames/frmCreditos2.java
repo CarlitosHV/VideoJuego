@@ -11,19 +11,30 @@ import clases.Clase_Sonido;
  *
  * @author vicOMG99
  */
-public class frmCreditos2 extends javax.swing.JFrame {
+public class frmCreditos2 extends javax.swing.JFrame
+{
 
-    
     Clase_Sonido son = new Clase_Sonido();
     public String Menu = "mainsong";
-    
+    public static int bandera;
+
     /**
      * Creates new form frmCreditos2
      */
-    public frmCreditos2() 
+    public frmCreditos2(int n)
     {
         initComponents();
-        son.sonidomenu(Menu);
+        bandera = n;
+        if (bandera == 2)
+        {
+            son.sonidoOff();
+        } else
+        {
+            if (bandera == 1)
+            {
+                son.sonidomenu(Menu);
+            }
+        }
         setLocationRelativeTo(null);
     }
 
@@ -110,43 +121,63 @@ public class frmCreditos2 extends javax.swing.JFrame {
 
     private void btnBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBackMouseClicked
         son.sonidoOff();
-        menu obj = new menu();
+        if (bandera == 2)
+        {
+            menu obj = new menu(2);
+            obj.setVisible(true);
+        } else
+        {
+            if (bandera == 1)
+            {
+                menu obj = new menu(1);
+                obj.setVisible(true);
+            }
+        }
         this.setVisible(false);
-        obj.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnBackMouseClicked
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(String args[])
+    {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+        try
+        {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels())
+            {
+                if ("Nimbus".equals(info.getName()))
+                {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
+        } catch (ClassNotFoundException ex)
+        {
             java.util.logging.Logger.getLogger(frmCreditos2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
+        } catch (InstantiationException ex)
+        {
             java.util.logging.Logger.getLogger(frmCreditos2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
+        } catch (IllegalAccessException ex)
+        {
             java.util.logging.Logger.getLogger(frmCreditos2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (javax.swing.UnsupportedLookAndFeelException ex)
+        {
             java.util.logging.Logger.getLogger(frmCreditos2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new frmCreditos2().setVisible(true);
+        java.awt.EventQueue.invokeLater(new Runnable()
+        {
+            public void run()
+            {
+                new frmCreditos2(1).setVisible(true);
             }
         });
     }

@@ -13,47 +13,38 @@ import java.awt.Color;
  *
  * @author vicOMG99
  */
-
-public class menu extends javax.swing.JFrame {
+public class menu extends javax.swing.JFrame
+{
 
     public boolean musicaon = true;
     Clip sonidomen = null;
     int bndS = 0;
     boolean isplay = false;
-   
+
     public static Clip clipFondo;
-    public int bandera2;
-    public int bandera1=1;
+    public int bandera1;
 
-    public int getBandera1() {
-        return bandera1;
-    }
-
-    public void setBandera1(int bandera1) {
-        this.bandera1 = bandera1;
-    }
-
-    public menu(int bandera1) {
-        this.bandera1 = bandera1;
-    }
-    
-    
     Clase_Sonido son = new Clase_Sonido();
     public String Menu = "mainsong";
     public String Boton = "boton";
-    
-    
-    
+    public static int bandera2;
 
-    public menu() {
+    public menu(int n)
+    {
         initComponents();
-        
-        son.sonidomenu(Menu);
-        
-        if(musicaon==false){
-            System.out.println(bandera1);
+        bandera1 = 1;
+        bandera2 = n;
+        if (bandera2 == 2)
+        {
+            son.sonidoOff();
+        } else
+        {
+            if (bandera2 == 1 )
+            {
+                son.sonidomenu(Menu);
+            }
         }
-        System.out.println(bandera1);
+
         this.setLocationRelativeTo(null);
 
     }
@@ -193,27 +184,59 @@ public class menu extends javax.swing.JFrame {
 
     private void botonPlayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonPlayActionPerformed
         son.sonidoOff();
-        frmSeleccion2 per = new frmSeleccion2();
-        per.setVisible(true);
+        if (bandera1 == 1)
+        {
+            frmSeleccion2 sel = new frmSeleccion2(1);
+            sel.setVisible(true);
+        } else
+        {
+            if (bandera1 == 2)
+            {
+                frmSeleccion2 sel = new frmSeleccion2(2);
+                sel.setVisible(true);
+            }
+        }
         this.dispose();
     }//GEN-LAST:event_botonPlayActionPerformed
 
     private void btnAyudaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAyudaMouseClicked
         son.sonidoOff();
         this.setVisible(false);
-        frmAyuda obj = new frmAyuda();
-        obj.setVisible(true);
+        if (bandera1 == 1)
+        {
+            frmAyuda obj = new frmAyuda(1);
+            obj.setVisible(true);
+        } else
+        {
+            if (bandera1 == 2)
+            {
+                frmAyuda obj = new frmAyuda(2);
+                obj.setVisible(true);
+            }
+        }
+        System.out.println(bandera1);
+
 
     }//GEN-LAST:event_btnAyudaMouseClicked
 
     private void btnAyudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAyudaActionPerformed
-        // TODO add your handling code here:
+        // agregar Gnomito
     }//GEN-LAST:event_btnAyudaActionPerformed
 
     private void btnCreditosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCreditosMouseClicked
         son.sonidoOff();
-        frmCreditos2 obj = new frmCreditos2();
-        obj.setVisible(true);
+        if (bandera1 == 1)
+        {
+            frmCreditos2 obj = new frmCreditos2(1);
+            obj.setVisible(true);
+        } else
+        {
+            if (bandera1 == 2)
+            {
+                frmCreditos2 obj = new frmCreditos2(2);
+                obj.setVisible(true);
+            }
+        }
         dispose();
     }//GEN-LAST:event_btnCreditosMouseClicked
 
@@ -225,59 +248,66 @@ public class menu extends javax.swing.JFrame {
     }//GEN-LAST:event_soMouseClicked
 
     private void soActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_soActionPerformed
-        isplay=true;
         if (isplay)
         {
             son.sonidomenu(Menu);
+            isplay = false;
         }
+        bandera1 = 1;
     }//GEN-LAST:event_soActionPerformed
 
     private void soffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_soffActionPerformed
-        isplay=false;
+        isplay = true;
         son.sonidoOff();
+        bandera1 = 2;
     }//GEN-LAST:event_soffActionPerformed
 
     private void salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirActionPerformed
-        
+
         System.exit(0);
     }//GEN-LAST:event_salirActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    
-  
-
-    
-    
-    public static void main(String args[]) {
+    public static void main(String args[])
+    {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+        try
+        {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels())
+            {
+                if ("Nimbus".equals(info.getName()))
+                {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
+        } catch (ClassNotFoundException ex)
+        {
             java.util.logging.Logger.getLogger(menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
+        } catch (InstantiationException ex)
+        {
             java.util.logging.Logger.getLogger(menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
+        } catch (IllegalAccessException ex)
+        {
             java.util.logging.Logger.getLogger(menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (javax.swing.UnsupportedLookAndFeelException ex)
+        {
             java.util.logging.Logger.getLogger(menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new menu().setVisible(true);
+        java.awt.EventQueue.invokeLater(new Runnable()
+        {
+            public void run()
+            {
+                new menu(1).setVisible(true);
 
             }
         });

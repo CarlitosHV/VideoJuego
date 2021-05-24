@@ -19,10 +19,15 @@ public class frmAyuda extends javax.swing.JFrame {
     Clase_Sonido son = new Clase_Sonido();
     public String Menu = "mainsong";
     boolean bandera1=true;
-    
-    public frmAyuda() {
+    public static int bandera;
+    public frmAyuda(int n) {
         initComponents();
-        
+        bandera=n;
+        if(bandera==1){
+            son.sonidomenu(Menu);
+        }else{
+            son.sonidoOff();
+        }
         
         
         this.setLocationRelativeTo(null);
@@ -134,9 +139,18 @@ public class frmAyuda extends javax.swing.JFrame {
 
     private void btnBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBackMouseClicked
         son.sonidoOff();
-        menu obj = new menu();
+        if (bandera==1)
+        {
+            menu obj = new menu(1);
+            obj.setVisible(true);
+        }else{
+            if (bandera==2)
+            {
+                menu obj = new menu(2);
+                obj.setVisible(true);
+            }
+        }
         this.setVisible(false);
-        obj.setVisible(true);
         this.dispose();    
     }//GEN-LAST:event_btnBackMouseClicked
 
@@ -170,7 +184,7 @@ public class frmAyuda extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new frmAyuda().setVisible(true);
+                new frmAyuda(1).setVisible(true);
             }
         });
     }

@@ -23,16 +23,24 @@ public class frmSeleccion2 extends javax.swing.JFrame
     private Animator animatorRobot;
     private Animator animatorAraña;
 
+    public static int bandera;
     Clase_Sonido son = new Clase_Sonido();
-    menu men = new menu();
-    
-
     public String Menu = "mainsong";
 
-    public frmSeleccion2()
+    public frmSeleccion2(int n)
     {
         initComponents();
-
+        bandera = n;
+        if (bandera == 1)
+        {
+            son.sonidomenu(Menu);
+        } else
+        {
+            if (bandera == 2)
+            {
+                son.sonidoOff();
+            }
+        }
         canvasLuci.addGLEventListener(new LuciMorning());
         canvasRobot.addGLEventListener(new Robot());
         canvasAraña.addGLEventListener(new Araña());
@@ -150,10 +158,21 @@ public class frmSeleccion2 extends javax.swing.JFrame
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBackMouseClicked
-        son.sonidoOff();
-        menu obj = new menu();
+        if (bandera == 2)
+        {
+            menu obj = new menu(2);
+            obj.setVisible(true);
+        } else
+        {
+            if (bandera == 1)
+            {
+                menu obj = new menu(1);
+                obj.setVisible(true);
+            }
+        }
+
         this.setVisible(false);
-        obj.setVisible(true);
+
         dispose();
 
     }//GEN-LAST:event_btnBackMouseClicked
@@ -192,9 +211,18 @@ public class frmSeleccion2 extends javax.swing.JFrame
         if (JOptionPane.showConfirmDialog(null, "¿Confirmas el personaje?", "Aviso",
                 JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION)
         {
-            son.sonidoOff();
-            Niveles niv = new Niveles(1);
-            niv.setVisible(true);
+            if (bandera == 1)
+            {
+                Niveles niv = new Niveles(1, 1);
+                niv.setVisible(true);
+            } else
+            {
+                if (bandera == 2)
+                {
+                    Niveles niv = new Niveles(1, 2);
+                    niv.setVisible(true);
+                }
+            }
             this.dispose();
         } else
         {
@@ -206,10 +234,20 @@ public class frmSeleccion2 extends javax.swing.JFrame
         if (JOptionPane.showConfirmDialog(null, "¿Confirmas el personaje?", "Aviso",
                 JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION)
         {
-            son.sonidoOff();
-            Niveles niv = new Niveles(2);
-            niv.setVisible(true);
+            if (bandera == 1)
+            {
+                Niveles niv = new Niveles(2, 1);
+                niv.setVisible(true);
+            } else
+            {
+                if (bandera == 2)
+                {
+                    Niveles niv = new Niveles(2, 2);
+                    niv.setVisible(true);
+                }
+            }
             this.dispose();
+            System.out.println(bandera);
         } else
         {
 
@@ -220,9 +258,18 @@ public class frmSeleccion2 extends javax.swing.JFrame
         if (JOptionPane.showConfirmDialog(null, "¿Confirmas el personaje?", "Aviso",
                 JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION)
         {
-            son.sonidoOff();
-            Niveles niv = new Niveles(3);
-            niv.setVisible(true);
+            if (bandera == 1)
+            {
+                Niveles niv = new Niveles(3, 1);
+                niv.setVisible(true);
+            } else
+            {
+                if (bandera == 2)
+                {
+                    Niveles niv = new Niveles(3, 2);
+                    niv.setVisible(true);
+                }
+            }
             this.dispose();
         } else
         {
@@ -270,7 +317,7 @@ public class frmSeleccion2 extends javax.swing.JFrame
         {
             public void run()
             {
-                new frmSeleccion2().setVisible(true);
+                new frmSeleccion2(1).setVisible(true);
             }
         });
     }
