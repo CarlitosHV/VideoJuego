@@ -5,6 +5,8 @@
  */
 package clases;
 
+
+import frames.menu;
 import java.util.Random;
 import javax.swing.JOptionPane;
 
@@ -30,6 +32,8 @@ public class Preguntas
                     JOptionPane.showMessageDialog(null, "Respuesta correcta :)", "Felicidades", 1);
                 }else{
                     JOptionPane.showMessageDialog(null, "Respuesta incorrecta :(", "Error", 1);
+                    menu men = new menu(1);
+                    men.setVisible(true);
                 }
                 break;
             case 1:
@@ -40,6 +44,8 @@ public class Preguntas
                     JOptionPane.showMessageDialog(null, "Respuesta correcta :)", "Felicidades", 1);
                 }else{
                     JOptionPane.showMessageDialog(null, "Respuesta incorrecta :(", "Error", 1);
+                    menu men = new menu(1);
+                    men.setVisible(true);
                 }
                 break;
             case 2:
@@ -50,6 +56,8 @@ public class Preguntas
                     JOptionPane.showMessageDialog(null, "Respuesta correcta :)", "Felicidades", 1);
                 }else{
                     JOptionPane.showMessageDialog(null, "Respuesta incorrecta :(", "Error", 1);
+                    menu men = new menu(1);
+                    men.setVisible(true);
                 }
                 break;
             case 3:
@@ -60,6 +68,8 @@ public class Preguntas
                     JOptionPane.showMessageDialog(null, "Respuesta correcta :)", "Felicidades", 1);
                 }else{
                     JOptionPane.showMessageDialog(null, "Respuesta incorrecta :(", "Error", 1);
+                    menu men = new menu(1);
+                    men.setVisible(true);
                 }
                 break;
             case 4:
@@ -70,6 +80,8 @@ public class Preguntas
                     JOptionPane.showMessageDialog(null, "Respuesta correcta :)", "Felicidades", 1);
                 }else{
                     JOptionPane.showMessageDialog(null, "Respuesta incorrecta :(", "Error", 1);
+                    menu men = new menu(1);
+                    men.setVisible(true);
                 }
                 break;
         }
